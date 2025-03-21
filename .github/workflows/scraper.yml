@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-  - cron: '30 */1 * * *'    # Runs every hour at the 30-minute mark
+    - cron: '30 */1 * * *'    # Runs every hour at the 30-minute mark
   workflow_dispatch:       # Allows manual triggering
 
 jobs:
@@ -29,6 +29,9 @@ jobs:
       run: |
         echo "BLACKBOARD_USER=${{ secrets.BLACKBOARD_USER }}" >> $GITHUB_ENV
         echo "BLACKBOARD_PASSWORD=${{ secrets.BLACKBOARD_PASSWORD }}" >> $GITHUB_ENV
+
+    - name: Add Project Root to PYTHONPATH
+      run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
     - name: Run Scraper Script
       run: python src/main.py
