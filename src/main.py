@@ -5,7 +5,7 @@ import os
 # Ensure src/ is in the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src,modules.blackboard_scraper import main as scrape_blackboard
+from src.modules.blackboard_scraper import main as scrape_blackboard
 from src.modules.calendar_manager import add_event
 
 def main():
@@ -22,7 +22,7 @@ def main():
             description=f"Assignment link: {assignment['link']}"
         )
 
-    print("✅ All assignments have been synced with Google Calendar!")
+    print("All assignments have been synced with Google Calendar!")
 
 if __name__ == "__main__":
     main()
