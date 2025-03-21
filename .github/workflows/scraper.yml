@@ -18,7 +18,7 @@ jobs:
     - name: Set Up Python
       uses: actions/setup-python@v4
       with:
-          python-version: '3.9'
+          python-version: '3.12'
 
     - name: Install Dependencies
       run: |
@@ -34,4 +34,12 @@ jobs:
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
     - name: Run Scraper Script
-      run: python src/main.py
+      env:
+        PYTHONPATH: src
+      run: |
+        python src/main.py
+
+
+
+
+
